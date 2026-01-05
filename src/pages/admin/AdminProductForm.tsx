@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { ArrowLeft, Save, Package, LogOut, Plus, Trash2, Loader2, ImagePlus, GripVertical } from "lucide-react";
+import { ArrowLeft, Save, Package, Plus, Trash2, Loader2, ImagePlus, GripVertical } from "lucide-react";
 import { toast } from "sonner";
 import {
   fetchAdminProduct,
@@ -23,6 +23,8 @@ import {
   AdminProduct,
   AdminCategory,
 } from "@/services/adminApi";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 interface ImageInput {
   id?: number;
@@ -138,13 +140,6 @@ const AdminProductForm = () => {
     }
   };
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("adminToken");
-    sessionStorage.removeItem("adminUser");
-    localStorage.removeItem("adminToken");
-    localStorage.removeItem("adminUser");
-    navigate("/admin/login");
-  };
 
   const handleChange = (field: string, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -259,27 +254,10 @@ const AdminProductForm = () => {
   }
 
   return (
-    <div className="min-h-screen bg-secondary">
-      {/* Header */}
-      <header className="bg-background border-b">
-        <div className="container py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link to="/" className="text-xl font-bold text-primary">
-              iPlace<span className="text-foreground">seminovos</span>
-            </Link>
-            <span className="text-muted-foreground">|</span>
-            <span className="text-sm text-muted-foreground">
-              {isEditing ? "Editar Produto" : "Novo Produto"}
-            </span>
-          </div>
-          <Button variant="outline" size="sm" onClick={handleLogout}>
-            <LogOut className="w-4 h-4 mr-2" />
-            Sair
-          </Button>
-        </div>
-      </header>
+    <div className="min-h-screen bg-secondary flex flex-col">
+      <Header />
 
-      <div className="container py-8">
+      <div className="container py-8 flex-1">
         <div className="flex items-center gap-4 mb-6">
           <Button variant="ghost" size="sm" asChild>
             <Link to="/admin/produtos">
@@ -585,6 +563,8 @@ const AdminProductForm = () => {
           </div>
         </form>
       </div>
+
+      <Footer />
     </div>
   );
 };
