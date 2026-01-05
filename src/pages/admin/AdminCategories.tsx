@@ -32,24 +32,14 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import {
   FolderTree,
   Plus,
   Edit,
   Trash2,
   ArrowLeft,
-  LogOut,
   Loader2,
   RefreshCw,
   Save,
-  Menu,
-  Package,
-  ShoppingCart,
-  DollarSign,
 } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -59,6 +49,7 @@ import {
   deleteAdminCategory,
   AdminCategory,
 } from "@/services/adminApi";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const AdminCategories = () => {
@@ -100,13 +91,6 @@ const AdminCategories = () => {
     loadCategories();
   }, [navigate]);
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("adminToken");
-    sessionStorage.removeItem("adminUser");
-    localStorage.removeItem("adminToken");
-    localStorage.removeItem("adminUser");
-    navigate("/admin/login");
-  };
 
   const openNewDialog = () => {
     setEditingCategory(null);
@@ -182,58 +166,7 @@ const AdminCategories = () => {
 
   return (
     <div className="min-h-screen bg-secondary flex flex-col">
-      {/* Header - Mobile optimized */}
-      <header className="bg-background border-b sticky top-0 z-50">
-        <div className="container py-3">
-          <div className="flex items-center justify-between">
-            {/* Left - Menu + Logo */}
-            <div className="flex items-center gap-3">
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="lg:hidden">
-                    <Menu className="w-5 h-5" />
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="left" className="w-72">
-                  <nav className="flex flex-col gap-4 mt-8">
-                    <Link to="/admin/dashboard" className="flex items-center gap-2 text-foreground hover:text-primary py-2">
-                      <DollarSign className="w-5 h-5" />
-                      Dashboard
-                    </Link>
-                    <Link to="/admin/produtos" className="flex items-center gap-2 text-foreground hover:text-primary py-2">
-                      <Package className="w-5 h-5" />
-                      Produtos
-                    </Link>
-                    <Link to="/admin/categorias" className="flex items-center gap-2 text-primary font-medium py-2">
-                      <FolderTree className="w-5 h-5" />
-                      Categorias
-                    </Link>
-                    <Link to="/admin/pedidos" className="flex items-center gap-2 text-foreground hover:text-primary py-2">
-                      <ShoppingCart className="w-5 h-5" />
-                      Pedidos
-                    </Link>
-                    <hr className="my-2" />
-                    <button onClick={handleLogout} className="flex items-center gap-2 text-destructive py-2">
-                      <LogOut className="w-5 h-5" />
-                      Sair
-                    </button>
-                  </nav>
-                </SheetContent>
-              </Sheet>
-              <Link to="/" className="flex items-center">
-                <span className="text-lg font-bold text-primary">iPlace</span>
-                <span className="text-xs text-muted-foreground ml-1">seminovos</span>
-              </Link>
-              <span className="hidden lg:inline text-muted-foreground">|</span>
-              <span className="hidden lg:inline text-sm text-muted-foreground">Gerenciar Categorias</span>
-            </div>
-            <Button variant="outline" size="sm" onClick={handleLogout} className="hidden lg:flex">
-              <LogOut className="w-4 h-4 mr-2" />
-              Sair
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <div className="container py-4 lg:py-8 flex-1">
         <div className="flex items-center gap-2 lg:gap-4 mb-4 lg:mb-6">
