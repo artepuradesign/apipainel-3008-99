@@ -82,7 +82,7 @@ const Header = () => {
             {/* Mobile Menu Button */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild className="lg:hidden">
-                <Button variant="ghost" size="icon" className="shrink-0">
+                <Button variant="ghost" size="icon" className="shrink-0 rounded-full hover:bg-foreground hover:text-background">
                   <Menu className="w-5 h-5" />
                 </Button>
               </SheetTrigger>
@@ -218,11 +218,11 @@ const Header = () => {
                   </span>
                 </Button>
               )}
-              <Button variant="ghost" size="icon" className="text-foreground hidden sm:flex">
-                <Heart className="w-5 h-5" />
+              <Button variant="ghost" size="icon" className="text-foreground hidden sm:flex rounded-full hover:bg-transparent hover:text-transparent group">
+                <Heart className="w-5 h-5 group-hover:fill-red-500 group-hover:text-red-500 transition-colors" />
               </Button>
               <Link to="/carrinho">
-                <Button variant="ghost" size="icon" className="text-foreground relative">
+                <Button variant="ghost" size="icon" className="text-foreground relative rounded-full hover:bg-foreground hover:text-background">
                   <ShoppingCart className="w-5 h-5" />
                   {itemCount > 0 && (
                     <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs w-5 h-5 rounded-full flex items-center justify-center">
@@ -248,7 +248,7 @@ const Header = () => {
                 <li key={cat.id}>
                   <Link 
                     to={`/busca?categoria=${cat.slug}`}
-                    className="text-foreground hover:text-primary transition-colors py-2"
+                    className="text-foreground hover:text-foreground/70 transition-colors py-2"
                   >
                     {cat.name}
                   </Link>
