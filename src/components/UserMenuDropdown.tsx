@@ -69,7 +69,7 @@ const UserMenuDropdown = ({ userName, userEmail, userType, onLogout }: UserMenuD
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button variant="ghost" className="flex items-center gap-2 px-3 group">
+        <Button variant="ghost" className="flex items-center gap-2 px-3 group rounded-full hover:bg-transparent">
           <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center transition-colors group-hover:bg-foreground">
             <User className="w-4 h-4 text-muted-foreground transition-colors group-hover:text-background" />
           </div>
