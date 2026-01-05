@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { ShoppingCart, User, Heart, Menu, LogOut, Package, MapPin, UserCircle, HelpCircle } from "lucide-react";
+import { ShoppingCart, User, Heart, Menu, LogOut, Package, MapPin, UserCircle, HelpCircle, ChevronDown, ChevronRight } from "lucide-react";
 import AppleLogo from "@/assets/logo-apple.svg";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import SearchDropdown from "./SearchDropdown";
 import LoginModal from "./LoginModal";
 import UserMenuDropdown from "./UserMenuDropdown";
@@ -21,6 +22,7 @@ interface Usuario {
 const Header = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProdutosOpen, setIsProdutosOpen] = useState(false);
   const [usuario, setUsuario] = useState<Usuario | null>(null);
   const { getItemCount } = useCart();
   const { categories } = useCategories();
@@ -104,19 +106,31 @@ const Header = () => {
                 )}
                 
                 <nav className="p-4">
-                  <ul className="space-y-1">
-                    {categories.map((cat) => (
-                      <li key={cat.id}>
-                        <Link
-                          to={`/busca?categoria=${cat.slug}`}
-                          className="block px-3 py-3 text-foreground hover:bg-secondary rounded-lg transition-colors"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {cat.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  <Collapsible open={isProdutosOpen} onOpenChange={setIsProdutosOpen}>
+                    <CollapsibleTrigger className="flex items-center justify-between w-full px-3 py-3 text-foreground hover:bg-secondary rounded-lg transition-colors">
+                      <span className="font-medium">Produtos</span>
+                      {isProdutosOpen ? (
+                        <ChevronDown className="w-4 h-4" />
+                      ) : (
+                        <ChevronRight className="w-4 h-4" />
+                      )}
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                      <ul className="ml-4 mt-1 space-y-1 border-l border-border pl-3">
+                        {categories.map((cat) => (
+                          <li key={cat.id}>
+                            <Link
+                              to={`/busca?categoria=${cat.slug}`}
+                              className="block px-3 py-2 text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {cat.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </CollapsibleContent>
+                  </Collapsible>
                 </nav>
                 
                 <div className="p-4 border-t border-border mt-auto">
