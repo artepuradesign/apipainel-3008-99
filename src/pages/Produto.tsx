@@ -188,7 +188,7 @@ const Produto = () => {
               <img
                 src={product.images[currentImage]}
                 alt={product.name}
-                className="max-w-full max-h-full object-contain p-4"
+                className="w-full h-full object-contain"
               />
               
               {/* Navigation Arrows */}
