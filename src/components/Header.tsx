@@ -214,7 +214,7 @@ const Header = () => {
                   <User className="w-5 h-5" />
                 </Button>
               )}
-              <Button variant="ghost" size="icon" className="text-foreground hidden sm:flex rounded-full hover:bg-foreground group">
+              <Button variant="ghost" size="icon" className="text-foreground hidden sm:flex rounded-full hover:bg-transparent hover:text-transparent group">
                 <Heart className="w-5 h-5 group-hover:fill-red-500 group-hover:text-red-500 transition-colors" />
               </Button>
               <Link to="/carrinho">
