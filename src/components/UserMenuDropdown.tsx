@@ -73,7 +73,7 @@ const UserMenuDropdown = ({ userName, userEmail, userType, onLogout }: UserMenuD
           <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center transition-colors group-hover:bg-foreground">
             <User className="w-4 h-4 text-muted-foreground transition-colors group-hover:text-background" />
           </div>
-          <span className="hidden md:inline-block text-sm font-medium max-w-[100px] truncate">
+          <span className="hidden md:inline-block text-sm font-medium max-w-[100px] truncate text-foreground">
             {userName || "Minha Conta"}
           </span>
           <ChevronDown className="w-4 h-4 text-muted-foreground" />
