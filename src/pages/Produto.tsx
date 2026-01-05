@@ -184,7 +184,7 @@ const Produto = () => {
           <div className="space-y-3 order-2 lg:order-1">
             
             {/* Main Image */}
-            <div className="relative aspect-square bg-secondary/30 flex items-center justify-center rounded-xl overflow-hidden">
+            <div className="relative aspect-square flex items-center justify-center rounded-xl overflow-hidden">
               <img
                 src={product.images[currentImage]}
                 alt={product.name}
