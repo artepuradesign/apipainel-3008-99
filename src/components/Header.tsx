@@ -207,15 +207,11 @@ const Header = () => {
               ) : (
                 <Button 
                   variant="ghost" 
-                  size="sm" 
-                  className="text-foreground gap-2 hidden md:flex"
+                  size="icon"
+                  className="text-foreground rounded-full hover:bg-foreground hover:text-background"
                   onClick={() => setIsLoginOpen(true)}
                 >
                   <User className="w-5 h-5" />
-                  <span className="hidden lg:inline text-xs">
-                    Bem vindo!<br />
-                    <span className="text-muted-foreground">Entre ou cadastre-se</span>
-                  </span>
                 </Button>
               )}
               <Button variant="ghost" size="icon" className="text-foreground hidden sm:flex rounded-full hover:bg-transparent hover:text-transparent group">
